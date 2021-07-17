@@ -2,11 +2,9 @@ package socks4
 
 import (
 	"context"
-	"log"
 	"net"
 	"net/http"
 	"net/http/httptest"
-	"os"
 	"strings"
 	"testing"
 	"time"
@@ -77,7 +75,6 @@ func TestServerAndClientWithDomain(t *testing.T) {
 	defer listen.Close()
 
 	proxy := NewServer()
-	proxy.Logger = log.New(os.Stderr, "[socks4] ", log.LstdFlags)
 	go proxy.Serve(listen)
 
 	dial, err := NewDialer("socks4://" + listen.Addr().String())
@@ -104,7 +101,6 @@ func TestServerAndClientWithServerDomain(t *testing.T) {
 	defer listen.Close()
 
 	proxy := NewServer()
-	proxy.Logger = log.New(os.Stderr, "[socks4] ", log.LstdFlags)
 	go proxy.Serve(listen)
 
 	dial, err := NewDialer("socks4a://" + listen.Addr().String())

@@ -19,3 +19,4 @@ output/**
 note/
 .DS_Store
 vendor/
+go.sum

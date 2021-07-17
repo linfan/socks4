@@ -3,8 +3,8 @@ package socks4
 import (
 	"context"
 	"fmt"
+	"github.com/rs/zerolog/log"
 	"io"
-	"log"
 	"net"
 )
 
@@ -15,8 +15,6 @@ type Server struct {
 	// ProxyDial specifies the optional proxyDial function for
 	// establishing the transport connection.
 	ProxyDial func(context.Context, string, string) (net.Conn, error)
-	// Logger error log
-	Logger *log.Logger
 	// Context is default context
 	Context context.Context
 	// BytesPool getting and returning temporary bytes for use by io.CopyBuffer
@@ -43,7 +41,8 @@ func (s *Server) Serve(l net.Listener) error {
 	for {
 		conn, err := l.Accept()
 		if err != nil {
-			return err
+			log.Error().Err(err)
+			continue
 		}
 		go s.ServeConn(conn)
 	}
@@ -53,8 +52,8 @@ func (s *Server) Serve(l net.Listener) error {
 func (s *Server) ServeConn(conn net.Conn) {
 	defer conn.Close()
 	err := s.serveConn(conn)
-	if err != nil && s.Logger != nil && !isClosedConnError(err) {
-		s.Logger.Println(err)
+	if err != nil && !isClosedConnError(err) {
+		log.Error().Err(err)
 	}
 }
 
