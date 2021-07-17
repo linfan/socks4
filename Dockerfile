@@ -1,5 +1,5 @@
 FROM golang:alpine AS builder
-WORKDIR /go/src/github.com/wzshiming/socks4/
+WORKDIR /go/src/github.com/linfan/socks4/
 COPY . .
 ENV CGO_ENABLED=0
 RUN go install ./cmd/socks4

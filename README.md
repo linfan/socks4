@@ -1,6 +1,6 @@
 # Socks4
 
-Socks4/Socks4a server and client
+Socks4/Socks4a server and client. Forked from [wzshiming](https://github.com/wzshiming/socks4).
 
 [![Build Status](https://travis-ci.org/wzshiming/socks4.svg?branch=master)](https://travis-ci.org/wzshiming/socks4)
 [![Go Report Card](https://goreportcard.com/badge/github.com/wzshiming/socks4)](https://goreportcard.com/report/github.com/wzshiming/socks4)

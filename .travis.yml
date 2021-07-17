@@ -6,11 +6,11 @@ jobs:
   include:
     - go: 1.15.x
       stage: deploy
-      go_import_path: github.com/wzshiming/socks4
+      go_import_path: github.com/linfan/socks4
       install: skip
       script: skip
       before_deploy:
-        - BASENAME=socks4 bash -c "$(curl -fsSL https://github.com/wzshiming/my-shell/raw/master/build_all.bash)"
+        - BASENAME=socks4 bash -c "$(curl -fsSL https://github.com/linfan/my-shell/raw/master/build_all.bash)"
       deploy:
         provider: releases
         api_key: $CI_TOKEN
@@ -18,6 +18,6 @@ jobs:
         file: release/*
         skip_cleanup: true
         on:
-          repo: wzshiming/socks4
+          repo: linfan/socks4
           branch: master
           tags: true

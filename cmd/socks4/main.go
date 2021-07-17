@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/wzshiming/socks4"
+	"github.com/linfan/socks4"
 )
 
 var address string

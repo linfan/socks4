@@ -1,3 +1,3 @@
-module github.com/wzshiming/socks4
+module github.com/linfan/socks4
 
 go 1.15
